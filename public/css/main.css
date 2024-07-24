@@ -1,0 +1,165 @@
+img {
+    pointer-events: none;
+}
+
+textarea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+#selection1:focus,
+#selection2:focus,
+#selection3:focus,
+#selection4:focus,
+#selection5:focus,
+#selection6:focus,
+#selection7:focus,
+#selection8:focus,
+#selection9:focus{   
+  border-color: black;
+  box-shadow: 0 1px 1px black inset, 0 0 8px black;
+  outline: 0 none;
+}
+
+#vcc1:focus-within,
+#vcc2:focus-within{
+  border-color: black;
+  box-shadow: 0 1px 1px black inset, 0 0 8px black;
+  outline: 0 none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+a, a:link, a:visited, a:hover, a:active{ color: #212529; }
+label::-moz-selection { color: white; background: #212529; }
+label::selection { color: white; background: #212529; }
+span::-moz-selection { color: white; background: #212529; }
+span::selection { color: white; background: #212529; }
+.form-control::-moz-selection { color: white; background: #212529; }
+.form-control::selection { color: white; background: #212529; }
+
+.navbar{
+    font-family: Yantramanav-Regular;
+    opacity: 0.9;
+    font-size: 13px;
+}
+
+.brand{
+    font-family: Yantramanav-Black;
+}
+
+.font-size-10px{
+    font-size: 10px;
+}
+
+.font-size-13px{
+    font-size: 13px;
+}
+
+.margin-top-100px{
+  margin-top: 100px;
+}
+
+.margin-top-75px{
+  margin-top: 75px;
+}
+
+.margin-top-55px{
+    margin-top: 55px;
+}
+
+.margin-top-50px{
+  margin-top: 50px;
+}
+
+.margin-top-30px{
+  margin-top: 30px;
+}
+
+.margin-top-25px{
+  margin-top: 25px;
+}
+
+.margin-top-20px{
+  margin-top: 20px;
+}
+
+.margin-top-10px{
+  margin-top: 10px;
+}
+
+.margin-top-5px{
+  margin-top: 5px;
+}
+
+.margin-top-4px{
+  margin-top: 4px;
+}
+
+.margin-left-5px{
+  margin-left: 5px;
+}
+
+.margin-bottom-0px{
+  margin-bottom: 0px;
+}
+
+.margin-bottom-5px{
+  margin-bottom: 5px;
+}
+
+.margin-bottom-10px{
+  margin-bottom: 10px;
+}
+
+.margin-left-2px{
+  margin-left: 2px;
+}
+
+.padding-5px{
+  padding:  5px;
+}
+
+.padding-10px{
+  padding:  10px;
+}
+
+.fade-leave-active {
+  transition: opacity .5s;
+}
+
+.fade-enter-active{
+  transition: opacity 1s;
+}
+
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
+
+@font-face{
+    font-family: Yantramanav-Regular;
+    src: url(/fonts/Yantramanav-Regular.ttf?b42044f9822800974c9d12f509d47dee);
+}
+
+@font-face{
+    font-family: Yantramanav-Black;
+    src: url(/fonts/Yantramanav-Black.ttf?fd78570559431e9787df40215f8a0683);
+}
