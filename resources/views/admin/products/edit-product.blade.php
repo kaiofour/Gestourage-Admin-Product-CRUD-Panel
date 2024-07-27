@@ -1,38 +1,44 @@
 @extends('layouts.app')
-@section('title', 'Edit Product')
-@section('content')
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Edit Product</title>
-</head>
-<body>
-    <h1>Edit Product</h1>
 
+@section('content')
+<div class="container">
+    <h1>Edit Product</h1>
     <form action="{{ route('products.update', $product->prodID) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
-
-        <label for="prodName">Product Name:</label>
-        <input type="text" id="prodName" name="prodName" value="{{ old('prodName', $product->prodName) }}" required>
-        <br>
-
-        <label for="prodDesc">Product Description:</label>
-        <input type="text" id="prodDesc" name="prodDesc" value="{{ old('prodDesc', $product->prodDesc) }}" required>
-        <br>
-
-        <label for="prodImageURL">Product Image:</label>
-        <input type="file" id="prodImageURL" name="prodImageURL">
-        <br>
-
-        <label for="prodLastModified">Last Modified:</label>
-        <input type="date" id="prodLastModified" name="prodLastModified" value="{{ old('prodLastModified', $product->prodLastModified) }}" required>
-        <br>
-
-        <button type="submit">Update Product</button>
+        <div class="form-group">
+            <label for="prodName">Product Name</label>
+            <input type="text" name="prodName" class="form-control" id="prodName" value="{{ $product->prodName }}" required>
+        </div>
+        <div class="form-group">
+            <label for="prodDesc">Product Description</label>
+            <textarea name="prodDesc" class="form-control" id="prodDesc" required>{{ $product->prodDesc }}</textarea>
+        </div>
+        <div class="form-group">
+            <label for="prodImageURL">Product Image</label>
+            <input type="file" name="prodImageURL" class="form-control-file" id="prodImageURL">
+            @if($product->prodImageURL)
+                <img src="data:image/jpeg;base64,{{ $product->prodImageURL }}" alt="Product Image" class="mt-2" style="max-width: 200px;">
+            @endif
+        </div>
+        <div class="form-group">
+            <label for="prodLastModified">Last Modified Date</label>
+            <input type="date" name="prodLastModified" class="form-control" id="prodLastModified" value="{{ $product->prodLastModified }}" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Update Product</button>
     </form>
+</div>
 
-    <a href="{{ route('admin.dashboard') }}">Back to Dashboard</a>
-</body>
-</html>
+<!-- <div class="container">
+    <h1>Delete Product</h1>
+    <p>Are you sure you want to delete this product?</p>
+
+    <form action="{{ route('products.destroy', $product->prodID) }}" method="POST">
+        @csrf
+        @method('DELETE')
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a href="{{ route('admin.dashboard') }}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div> -->
+
 @endsection

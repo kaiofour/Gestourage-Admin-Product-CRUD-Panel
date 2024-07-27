@@ -40,7 +40,7 @@
                     <td>{{ $product->prodLastModified }}</td>
                     <td>
                         <a class="btn btn-primary btn-sm" href="{{ route('products.edit', $product->prodID) }}">Edit</a>
-                        <a class="btn btn-danger btn-sm" href="{{ route('products.delete', $product->prodID) }}">Delete</a>
+                        <a class="btn btn-danger btn-sm" href="{{ route('products.destroy', $product->prodID) }}">Delete</a>
                     </td>
                 </tr>
                 @endforeach

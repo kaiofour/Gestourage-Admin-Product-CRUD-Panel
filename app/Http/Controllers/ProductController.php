@@ -61,7 +61,6 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
         $product = Product::findOrFail($id);
-        dd($request->all());
         
         $request->validate([
             'prodName' => 'required',
@@ -76,15 +75,16 @@ class ProductController extends Controller
         if ($request->hasFile('prodImageURL')) {
             $imageContent = file_get_contents($request->file('prodImageURL')->getRealPath());
             $encodedImage = base64_encode($imageContent);
-    
-            // Debug: Check the length of the encoded string
-            // dd(strlen($encodedImage));
-    
             $product->prodImageURL = $encodedImage;
         }
     
         $product->prodLastModified = $request->get('prodLastModified');
         $product->save();
+    
+        // Debugging line to check if product was updated successfully
+        if (!$product->wasChanged()) {
+            dd('Product was not updated', $product->toArray());
+        }
     
         return redirect()->route('admin.dashboard')->with('success', 'Product updated successfully.');
     }
@@ -92,10 +92,14 @@ class ProductController extends Controller
 
     public function destroy($id)
     {
+        //dd("Destroy method called with ID: " . $id);
         $product = Product::findOrFail($id);
         $product->delete();
-    
+
         return redirect()->route('admin.dashboard')->with('success', 'Product deleted successfully.');
     }
+
+
+
     
 }

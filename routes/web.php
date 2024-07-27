@@ -37,8 +37,8 @@ Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('login', [LoginController::class, 'login'])->name('login.submit');
 
 // Admin login routes
-Route::get('admin-login', [AdminController::class, 'showLoginForm'])->name('admin.login');
-Route::post('admin-login', [AdminController::class, 'login'])->name('admin.login.submit');
+Route::get('admin/admin_login', [AdminController::class, 'showLoginForm'])->name('admin.login');
+Route::post('admin/admin_login', [AdminController::class, 'login'])->name('admin.login.submit');
 Route::get('admin/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
 Route::get('admin/logout', [AdminDashboardController::class, 'logout'])->name('admin.logout');
 
@@ -48,8 +48,8 @@ Route::middleware('auth:admin')->group(function () {
     Route::post('admin/products', [ProductController::class, 'store'])->name('products.store');
     Route::get('admin/products/{id}/edit', [ProductController::class, 'edit'])->name('products.edit');
     Route::put('admin/products/{id}', [ProductController::class, 'update'])->name('products.update');
-    Route::delete('admin/products/{id}', [ProductController::class, 'destroy'])->name('products.delete');
+    Route::delete('admin/products/{id}', [ProductController::class, 'destroy'])->name('products.destroy');
 });
 
-// Resource controller routes
-Route::resource('products', ProductController::class);
+
+Route::resource('/products', ProductController::class)->except(['show']);
