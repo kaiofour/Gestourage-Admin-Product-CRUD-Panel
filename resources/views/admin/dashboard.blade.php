@@ -39,8 +39,8 @@
                     <td><img src="data:image/jpeg;base64,{{ base64_encode($product->prodImageURL) }}" alt="{{ $product->prodName }}" style="width:50px;height:50px;"></td>
                     <td>{{ $product->prodLastModified }}</td>
                     <td>
-                        <a class="btn btn-primary btn-sm" href="{{ route('products.edit', $product->prodID) }}">Edit</a>
-                        <a class="btn btn-danger btn-sm" href="{{ route('products.destroy', $product->prodID) }}">Delete</a>
+                        <a class="btn btn-primary btn-sm" href="{{ route('products.edit', $product->prodID) }}">Modify Product</a>
+                        <!-- <a class="btn btn-danger btn-sm" href="{{ route('products.destroy', $product->prodID) }}">Delete</a> -->
                     </td>
                 </tr>
                 @endforeach

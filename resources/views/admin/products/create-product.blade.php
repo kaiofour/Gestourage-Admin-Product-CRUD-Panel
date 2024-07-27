@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="container">
-    <h2>Create Product</h2>
+    <br><h2>Create Product</h2>
     <form method="POST" action="{{ route('products.store') }}" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
@@ -23,7 +23,7 @@
             <label for="prodLastModified">Last Modified</label>
             <input type="date" class="form-control" id="prodLastModified" name="prodLastModified" required>
         </div>
-        <button type="submit" class="btn btn-success">Create</button>
+        <br><button type="submit" class="btn btn-success">Create</button>
     </form>
 </div>
 @endsection

@@ -32,18 +32,20 @@ Route::post('/register/registration', [RegistrationController::class, 'registrat
 Route::post('/login/authentication', [LoginController::class, 'authentication']);
 Route::get('/get_accounts', [LoginController::class, 'get_accounts']);
 
-// Module 8 starts here chuchu
+// Module 8 starts here
 Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('login', [LoginController::class, 'login'])->name('login.submit');
 
-// admin login routes
+// Admin login routes
 Route::get('admin/admin_login', [AdminController::class, 'showLoginForm'])->name('admin.login');
 Route::post('admin/admin_login', [AdminController::class, 'login'])->name('admin.login.submit');
 Route::get('admin/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
 Route::get('admin/logout', [AdminDashboardController::class, 'logout'])->name('admin.logout');
 
-// routes 4 admin dashboard and authenticated routes
-Route::middleware('auth.admin')->group(function () {
+Route::resource('/products', ProductController::class)->except(['show']);
+
+// Admin dashboard and authenticated routes
+Route::middleware('auth:admin')->group(function () {
     Route::get('admin/products/create', [ProductController::class, 'create'])->name('products.create');
     Route::post('admin/products', [ProductController::class, 'store'])->name('products.store');
     Route::get('admin/products/{id}/edit', [ProductController::class, 'edit'])->name('products.edit');
@@ -51,8 +53,29 @@ Route::middleware('auth.admin')->group(function () {
     Route::delete('admin/products/{id}', [ProductController::class, 'destroy'])->name('products.destroy');
 });
 
-Route::delete('admin/products/{id}', function($id) {
-    return "Deleting item with ID: $id";
+Route::middleware('auth:admin')->group(function () {
+    Route::get('admin/products/create', function() {
+        return 'Create route hit';
+    });
+
+    Route::post('admin/products', function() {
+        return 'Store route hit';
+    });
+
+    Route::get('admin/products/{id}/edit', function($id) {
+        return 'Edit route hit: ' . $id;
+    });
+
+    Route::put('admin/products/{id}', function($id) {
+        return 'Update route hit: ' . $id;
+    });
+
+    Route::delete('admin/products/{id}', function($id) {
+        return 'Destroy route hit: ' . $id;
+    });
 });
 
-Route::resource('products', ProductController::class)->except(['show']);
+
+
+
+

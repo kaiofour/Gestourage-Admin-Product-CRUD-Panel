@@ -92,12 +92,15 @@ class ProductController extends Controller
 
     public function destroy($id)
     {
-        //dd("Destroy method called with ID: " . $id);
+        //Log::info('Destroy method called with id: ' . $id);
         $product = Product::findOrFail($id);
         $product->delete();
 
-        return redirect()->route('admin.dashboard')->with('success', 'Product deleted successfully.');
+        //Log::info('Product deleted successfully');
+
+        return redirect()->route('admin.dashboard')->with('success', 'Product deleted successfully');
     }
+
 
 
 
